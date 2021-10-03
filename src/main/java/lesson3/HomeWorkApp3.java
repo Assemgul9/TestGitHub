@@ -8,9 +8,7 @@ import java.util.Scanner;
 public class HomeWorkApp3 {
     private static Scanner scanner = new Scanner(System.in);
 
-
     public static void main(String[] args) {
-
 
         fifthTask();
         nextTask();
