@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class HomeWorkApp3 {
     private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {B_lesson_3.1
 
         fifthTask();
         nextTask();
@@ -18,6 +18,8 @@ public class HomeWorkApp3 {
         taskTask();
         seventhTask(new int[]{23, 23, 45, 56, 11, 2, 1, 9, 17, 4});
         eighthTask(new int[]{1, 2, 3, 4, 5,}, 1);
+        fifthTask();
+        nextTask();
     }
 
     public static void fifthTask() {
@@ -68,6 +70,10 @@ public class HomeWorkApp3 {
             for (int j = 0; j < arr2.length; j++) {
                 if (i == j || i == arr2.length - 1 - j) {
                     arr2[i][j] = 1;
+            for (int j = 0, x = arr2.length - 1; j < arr2.length; j++, x--) {
+                if (i == j) {
+                    arr2[i][j] = 1;
+                    arr2[i][x] = 1;
                 }
                 System.out.print(arr2[i][j] + " ");
             }
@@ -138,7 +144,10 @@ public class HomeWorkApp3 {
             }
 
 
-
         }System.out.print(Arrays.toString(arr6));
+
     }
+    public static void sixTask(){
+        int[]arr4=new int[]{123, 24, 47, 89, 90,23};
+      }
 }
