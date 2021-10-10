@@ -1,5 +1,6 @@
-package lesson4;
+package Homeworks.lesson4;
 
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,7 +24,7 @@ public class HomeWorkApp4 {
             playTurn();
             printMap();
             if(checkWin(MAP_ELEMENT_X)){
-                System.out.println("Игра окончена!Вы выиграли!");
+                System.out.println("Игра окончена!Вы выйграли!");
                 break;
             }
             if(isMapFull()){
