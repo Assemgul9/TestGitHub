@@ -28,8 +28,8 @@ public class Cat {
 
     public void setSatiety(boolean satiety){
         isSatiety=satiety;
-
     }
+
     public void eat(Plate plate){
         if(plate.getFood()>=appetite){
         plate.decreaseFood(appetite);
@@ -49,7 +49,6 @@ public class Cat {
         else{
             isHungry=true;
             System.out.println((name+ " остался голодным, потому что в тарелке слишком мало еды"));
-
         }
     }
 

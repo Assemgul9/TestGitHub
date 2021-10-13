@@ -14,7 +14,6 @@ public class Main {
             cat.info();
             cat.eat(plate);
             cat.info();
-
             }
     }
 }

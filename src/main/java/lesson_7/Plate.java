@@ -27,7 +27,5 @@ public class Plate {
             System.out.printf("Plate [Food: %d] \n",food);
             return true;
         }
-
     }
-
 }
