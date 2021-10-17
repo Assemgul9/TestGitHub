@@ -13,6 +13,8 @@ public class GuessNumber extends JFrame {
 
     private int tryNumber;
 
+    private int elseNumber;
+
 
 
     public GuessNumber() {
@@ -46,6 +48,7 @@ public class GuessNumber extends JFrame {
 
         for (int i = 1; i <= 10; i++) {
             tryNumber=1;
+            elseNumber=3;
             JButton button = new JButton(String.valueOf(i));
             button.setFont(font);
             buttonsPanel.add(button);
@@ -55,28 +58,15 @@ public class GuessNumber extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                    if(tryToAnswer(buttonIndex, button)&&tryNumber<=3) {
                        buttonsPanel.setVisible(false);
-
-
-
+                       winGame();
                     }
 
-
-                   if(!tryToAnswer(buttonIndex,button)&&tryNumber>3){
-                       tryToAnswer(buttonIndex,button);
+                   if(!tryToAnswer(buttonIndex,button)&&tryNumber>=3){
                        buttonsPanel.setVisible(false);
-                       textField.setText("Вы проиграли, количество попыток закончилось");
-                        JButton newGameButton = new JButton("Играть заново?");
-                        add(newGameButton, BorderLayout.CENTER);
-                        newGameButton.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                new GuessNumber();
-                                dispose();
-                            }
-                        });
-                        setVisible(true);
+                       loseGame();
 
                     } tryNumber+=1;
+
                 }
             });
 
@@ -85,35 +75,57 @@ public class GuessNumber extends JFrame {
         setVisible(true);
     }
 
+
+
     public boolean tryToAnswer(int answer, JButton button) {
 
-            if (tryNumber<=3&&answer == randomNumber) {
-                textField.setText("Вы угадали! Ответ: " + randomNumber);
-                button.setBackground(Color.GREEN);
-                JButton newGameButton = new JButton("Играть заново?");
-                add(newGameButton, BorderLayout.CENTER);
-                newGameButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        new GuessNumber();
-                        dispose();
-                    }
-                });
-                setVisible(true);
+            if (answer == randomNumber) {
+
                 return true;
 
-
-            } else if (tryNumber<=3&&answer > randomNumber) {
-                textField.setText("Не угадали! Загаданное число меньше");
+            } else if (answer > randomNumber) {
+                textField.setText("Не угадали! Загаданное число меньше, у вас " + (3 -tryNumber)+ " попытка(-и");
                 return false;
 
             } else {
                 textField.setText("Не угадали! Загада" +
-                        "нное число больше");}
+                        "нное число больше, у вас "+ (3-tryNumber) + " попытка(-и)");}
                 return false;
 
 
 
+
+    }
+
+    public void winGame(){
+        textField.setText("Вы угадали! Ответ: " + randomNumber);
+        JButton newGameButton = new JButton("Играть заново?");
+        add(newGameButton, BorderLayout.CENTER);
+        newGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuessNumber();
+                dispose();
+            }
+        });
+        setVisible(true);
+
+
+    }
+
+    public void loseGame(){
+
+        textField.setText("Вы проиграли, количество попыток закончилось");
+        JButton newGameButton = new JButton("Играть заново?");
+        add(newGameButton, BorderLayout.CENTER);
+        newGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new GuessNumber();
+                dispose();
+            }
+        });
+        setVisible(true);
 
     }
 
