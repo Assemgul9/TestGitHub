@@ -13,9 +13,6 @@ public class GuessNumber extends JFrame {
 
     private int tryNumber;
 
-    private int elseNumber;
-
-
 
     public GuessNumber() {
 
@@ -40,15 +37,11 @@ public class GuessNumber extends JFrame {
         textField.setFont(font);
 
 
-
-
-
         JPanel buttonsPanel = new JPanel(new GridLayout(1, 10));
         add(buttonsPanel, BorderLayout.CENTER);
 
         for (int i = 1; i <= 10; i++) {
             tryNumber=1;
-            elseNumber=3;
             JButton button = new JButton(String.valueOf(i));
             button.setFont(font);
             buttonsPanel.add(button);
@@ -56,7 +49,9 @@ public class GuessNumber extends JFrame {
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    button.setBackground(Color.YELLOW);
                     if(tryToAnswer(buttonIndex, button)&&tryNumber<=3) {
+
                         buttonsPanel.setVisible(false);
                         winGame();
                     }
@@ -80,7 +75,6 @@ public class GuessNumber extends JFrame {
     public boolean tryToAnswer(int answer, JButton button) {
 
         if (answer == randomNumber) {
-
             return true;
 
         } else if (answer > randomNumber) {
@@ -98,9 +92,13 @@ public class GuessNumber extends JFrame {
     }
 
     public void winGame(){
+        Font font=new Font("Times New Roman",Font.PLAIN,18);
         textField.setText("Вы угадали! Ответ: " + randomNumber);
+        textField.setFont(font);
         JButton newGameButton = new JButton("Играть заново?");
+        newGameButton.setFont(font);
         add(newGameButton, BorderLayout.CENTER);
+        newGameButton.setBackground(Color.GREEN);
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -114,10 +112,13 @@ public class GuessNumber extends JFrame {
     }
 
     public void loseGame(){
-
+        Font font=new Font("Times New Roman",Font.PLAIN,18);
         textField.setText("Вы проиграли, количество попыток закончилось");
+        textField.setFont(font);
         JButton newGameButton = new JButton("Играть заново?");
+        newGameButton.setFont(font);
         add(newGameButton, BorderLayout.CENTER);
+        newGameButton.setBackground(Color.RED);
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
